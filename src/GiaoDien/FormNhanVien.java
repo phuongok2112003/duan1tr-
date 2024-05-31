@@ -287,7 +287,7 @@ public class FormNhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_themActionPerformed
 
     private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
-        if(txt_manv.getText()!=""){
+        if(!txt_manv.getText().isEmpty()){
         Nhanvien nhanvien=ketnoi.findById(Integer.parseInt(txt_manv.getText()));
        nhanvien.setEmail(txt_email.getText());
        nhanvien.setGioiTinh(rd_nam.isSelected()==true?"Nam":"Nu");
@@ -302,7 +302,7 @@ public class FormNhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_suaActionPerformed
 
     private void btn_xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaActionPerformed
-        if(txt_manv.getText()!=""){
+        if(!txt_manv.getText().isEmpty()){
         ketnoi.xoa(Integer.parseInt(txt_manv.getText()));
         loaddata();
         
@@ -317,7 +317,7 @@ public class FormNhanVien extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        if(txt_timkiem.getText()!=""){
+        if(!txt_timkiem.getText().isEmpty()){
            model= ketnoi.timkiem(model, txt_timkiem.getText(),new String[]{"getMaNV","getHoTenNV","getGioiTinh","getSdt",
       "getEmail","getMatKhau","getNgaySinh"});
            
