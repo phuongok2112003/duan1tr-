@@ -7,6 +7,7 @@
 package Entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -96,8 +97,9 @@ public class Nhanvien implements Serializable {
         this.gioiTinh = gioiTinh;
     }
 
-    public Date getNgaySinh() {
-        return ngaySinh;
+    public String getNgaySinh() {
+         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(ngaySinh);
     }
 
     public void setNgaySinh(Date ngaySinh) {
