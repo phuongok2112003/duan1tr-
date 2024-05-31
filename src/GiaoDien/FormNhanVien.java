@@ -318,7 +318,7 @@ public class FormNhanVien extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         if(txt_timkiem.getText()!=""){
-            ketnoi.timkiem(model, txt_timkiem.getText(),new String[]{"getMaNV","getHoTenNV","getGioiTinh","getSdt",
+           model= ketnoi.timkiem(model, txt_timkiem.getText(),new String[]{"getMaNV","getHoTenNV","getGioiTinh","getSdt",
       "getEmail","getMatKhau","getNgaySinh"});
            
             
@@ -335,8 +335,8 @@ public class FormNhanVien extends javax.swing.JFrame {
             txt_sdt.setText(jTable1.getValueAt(row, 3).toString());
             txt_ten.setText(jTable1.getValueAt(row, 1).toString());
             if(jTable1.getValueAt(row, 2).toString().equals("Nam")){
-                rd_nam.setEnabled(true);
-            }else rd_nu.setEnabled(true);
+                rd_nam.setSelected(true);
+            }else rd_nu.setSelected(true);
             Date ngaysinh= DateUtils.parseDate(jTable1.getValueAt(row, 6).toString());
             date_ngaysinh.setDate(ngaysinh);
         }
