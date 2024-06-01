@@ -103,7 +103,6 @@ public class Phieumuon implements Serializable {
     public Date getNgayTra() {
         return ngayTra;
     }
-
     public void setNgayTra(Date ngayTra) {
         this.ngayTra = ngayTra;
     }
