@@ -8,6 +8,10 @@ package GiaoDien;
 
 import Entity.Controller;
 import Entity.Phieumuon;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,10 +22,11 @@ public class FormThongke extends javax.swing.JFrame {
 
     Controller<Phieumuon> ketnoi=new Controller<>(Phieumuon.class);
     DefaultTableModel model;
+     LocalDate currentDate = LocalDate.now();
     public FormThongke() {
         initComponents();
         loaddata();
-        model=jLabel1.get
+        model=(DefaultTableModel) jTable1.getModel();
     }
 
 
@@ -32,7 +37,6 @@ public class FormThongke extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        txt_nhanvien = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,19 +60,15 @@ public class FormThongke extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(317, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addComponent(txt_nhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addGap(289, 289, 289))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_nhanvien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -76,6 +76,14 @@ public class FormThongke extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
    void loaddata(){
+       List<Phieumuon>list= ketnoi.getAll();
+      List<Phieumuon>data=list.stream().filter(rootPane->
+      ChronoUnit.DAYS.between(currentDate, rootPane.getdate())>0
+      ).collect(Collectors.toList());
+      for(Phieumuon a:data){
+          model.addRow(new Object[] {a.getMaDG().getMaDG(),a.getMaDG().getHoTenDG()
+                  ,a.getNgayMuon(),a.getNgayTra(),ChronoUnit.DAYS.between(currentDate, a.getdate())} );
+      }
        
    }
     public static void main(String args[]) {
@@ -114,6 +122,5 @@ public class FormThongke extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txt_nhanvien;
     // End of variables declaration//GEN-END:variables
 }

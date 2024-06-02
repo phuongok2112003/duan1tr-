@@ -8,6 +8,8 @@ package Entity;
 
 import Entity.Chitietpm;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -106,7 +108,11 @@ public class Phieumuon implements Serializable {
     public void setNgayTra(Date ngayTra) {
         this.ngayTra = ngayTra;
     }
-
+    public LocalDate getdate(){
+        return ngayHenTra.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+    }
     public Boolean getTrangThai() {
         return trangThai;
     }
