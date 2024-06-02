@@ -8,6 +8,10 @@ package GiaoDien;
 
 import Entity.Controller;
 import Entity.Phieumuon;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,10 +22,12 @@ public class FormThongke extends javax.swing.JFrame {
 
     Controller<Phieumuon> ketnoi=new Controller<>(Phieumuon.class);
     DefaultTableModel model;
+     LocalDate currentDate = LocalDate.now();
     public FormThongke() {
         initComponents();
+         model=(DefaultTableModel) jTable1.getModel();
         loaddata();
-       // model=jLabel1.get
+       
     }
 
 
@@ -40,32 +46,30 @@ public class FormThongke extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã độc giả", "Tên độc giả", "Ngày mượn", "Thời gian hẹn trả", "Thời gian trả muộn"
+                "Mã đọc giả", "Tên đọc giả", "Ngày mượn", "Thời gian hẹn trả", "Thời gian trả muộn"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("THỐNG KÊ TRẢ MUỘN");
+        jLabel1.setText("THống kê trả muộn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(206, 206, 206))
+                .addContainerGap(317, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(289, 289, 289))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -73,6 +77,16 @@ public class FormThongke extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
    void loaddata(){
+       List<Phieumuon>list= ketnoi.getAll();
+      List<Phieumuon> data = list.stream()
+            .filter(phieuMuon -> (ChronoUnit.DAYS.between(phieuMuon.getdate(), currentDate) > 0)&&phieuMuon.getTrangThai()==true)
+            .collect(Collectors.toList());
+      long fg= ChronoUnit.DAYS.between(data.get(0).getdate() ,currentDate);
+              
+      for(Phieumuon a:data){
+          model.addRow(new Object[] {a.getMaDG().getMaDG(),a.getMaDG().getHoTenDG()
+                  ,a.getNgayMuon(),a.getNgayTra(),ChronoUnit.DAYS.between(a.getdate(),currentDate)} );
+      }
        
    }
     public static void main(String args[]) {

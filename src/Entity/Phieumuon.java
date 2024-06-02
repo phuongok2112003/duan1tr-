@@ -9,6 +9,8 @@ package Entity;
 import Entity.Chitietpm;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -87,7 +89,7 @@ public class Phieumuon implements Serializable {
 
     public String getNgayMuon() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        return sdf.format(ngayMuon);
+        return  sdf.format(ngayMuon);
     }
 
     public void setNgayMuon(Date ngayMuon) {
@@ -95,7 +97,7 @@ public class Phieumuon implements Serializable {
     }
 
     public String getNgayHenTra() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         return sdf.format(ngayHenTra);
     }
 
@@ -104,16 +106,17 @@ public class Phieumuon implements Serializable {
     }
 
     public String getNgayTra() {
-        if (ngayTra == null) {
-            return "";
-        }
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        return sdf.format(ngayTra);
+       SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return ngayTra!=null? sdf.format(ngayTra):"";
     }
     public void setNgayTra(Date ngayTra) {
         this.ngayTra = ngayTra;
     }
-
+    public LocalDate getdate(){
+        return ngayHenTra.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+    }
     public Boolean getTrangThai() {
         return trangThai;
     }
@@ -142,20 +145,15 @@ public class Phieumuon implements Serializable {
     public Nhanvien getMaNV() {
         return maNV;
     }
-
+    public String getInforNhanVien(){
+        return maNV.getMaNV().toString()+"-"+maNV.getHoTenNV();
+    }
+    public String getInforDocGia(){
+        return maDG.getMaDG().toString()+"-"+maDG.getHoTenDG();
+    }
     public void setMaNV(Nhanvien maNV) {
         this.maNV = maNV;
     }
-    
-    public String getInforDocGia(){
-        return getMaDG().getMaDG().toString()+"-"+getMaDG().getHoTenDG().toString();
-    }
-    
-    public String getInforNhanVien(){
-        return getMaNV().getMaNV().toString()+"-"+getMaNV().getHoTenNV().toString();
-    }
-    
-    
 
     @Override
     public int hashCode() {

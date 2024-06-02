@@ -38,6 +38,9 @@ public class FormPhieuMuon extends javax.swing.JFrame {
     List<Docgia> listDocGia = ketNoi_dg.getAll();
     public FormPhieuMuon() {
         initComponents();
+         for(Docgia dg : listDocGia){
+            cboMaDG.addItem(dg.getMaDG()+"-"+dg.getHoTenDG());
+        }
         model = (DefaultTableModel) jTable1.getModel();
         load();
     }
@@ -48,9 +51,7 @@ public class FormPhieuMuon extends javax.swing.JFrame {
             "getInforNhanVien", "getNgayMuon", "getNgayHenTra", "getNgayTra", "getTrangThai"});
         
         txtMaNV.setText("1-Trần Huyền Trang");
-        for(Docgia dg : listDocGia){
-            cboMaDG.addItem(dg.getMaDG()+"-"+dg.getHoTenDG());
-        }
+       
     }
     
     void clear() {
@@ -382,7 +383,7 @@ public class FormPhieuMuon extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         Phieumuon pm = new Phieumuon();
-        pm.setMaDG(ketNoi_dg.findById(XuLy.layId(cboMaDG.getSelectedItem().toString())));
+        pm.setMaDG( ketNoi_dg.findById(XuLy.layId(cboMaDG.getSelectedItem().toString())));
         pm.setMaNV(ketNoi_nv.findById(XuLy.layId(txtMaNV.getText())));
         pm.setNgayMuon(dtpNgayMuon.getDate());
         pm.setNgayHenTra(dtpNgayHenTra.getDate());
