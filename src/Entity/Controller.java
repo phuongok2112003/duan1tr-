@@ -60,7 +60,7 @@ public class Controller<T> {
     public List<T> findByIdAll(int id){
         EntityManager em = getEntityManager();
         try {
-           return  em.createNamedQuery(entityClass.getSimpleName()+".findBySoHoaDon",entityClass).setParameter("soHoaDon", id).getResultList();
+           return  em.createNamedQuery(entityClass.getSimpleName()+".findByMaPM",entityClass).setParameter("maPM", id).getResultList();
         } finally {
             em.close();
         }
