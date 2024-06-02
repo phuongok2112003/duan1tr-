@@ -63,8 +63,6 @@ public class Docgia implements Serializable {
     @Column(name = "DiaChi")
     private String diaChi;
     @OneToMany(mappedBy = "maDG")
-    private Collection<Hoadonphat> hoadonphatCollection;
-    @OneToMany(mappedBy = "maDG")
     private Collection<Phieumuon> phieumuonCollection;
 
     public Docgia() {
@@ -129,15 +127,6 @@ public class Docgia implements Serializable {
 
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
-    }
-
-    @XmlTransient
-    public Collection<Hoadonphat> getHoadonphatCollection() {
-        return hoadonphatCollection;
-    }
-
-    public void setHoadonphatCollection(Collection<Hoadonphat> hoadonphatCollection) {
-        this.hoadonphatCollection = hoadonphatCollection;
     }
 
     @XmlTransient

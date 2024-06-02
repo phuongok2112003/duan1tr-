@@ -62,8 +62,6 @@ public class Nhanvien implements Serializable {
     @Column(name = "MatKhau")
     private String matKhau;
     @OneToMany(mappedBy = "maNV")
-    private Collection<Hoadonphat> hoadonphatCollection;
-    @OneToMany(mappedBy = "maNV")
     private Collection<Phieumuon> phieumuonCollection;
 
     public Nhanvien() {
@@ -129,16 +127,6 @@ public class Nhanvien implements Serializable {
     public void setMatKhau(String matKhau) {
         this.matKhau = matKhau;
     }
-
-    @XmlTransient
-    public Collection<Hoadonphat> getHoadonphatCollection() {
-        return hoadonphatCollection;
-    }
-
-    public void setHoadonphatCollection(Collection<Hoadonphat> hoadonphatCollection) {
-        this.hoadonphatCollection = hoadonphatCollection;
-    }
-
     @XmlTransient
     public Collection<Phieumuon> getPhieumuonCollection() {
         return phieumuonCollection;
