@@ -95,6 +95,17 @@ public class Chitietpm implements Serializable {
     public void setSach(Sach sach) {
         this.sach = sach;
     }
+    
+    public String getInforPhieuMuon(){
+        return getPhieumuon().getMaPM().toString();
+    }
+    
+    public String getInforSach() {
+        if (sach != null) {
+            return sach.getMaSach()+ "-" + sach.getTenSach();
+        }
+        return "No Info";
+    }
 
     @Override
     public int hashCode() {
