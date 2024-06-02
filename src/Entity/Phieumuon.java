@@ -112,11 +112,19 @@ public class Phieumuon implements Serializable {
     public void setNgayTra(Date ngayTra) {
         this.ngayTra = ngayTra;
     }
-    public LocalDate getdate(){
+    
+    public LocalDate getdateNgayHenTra(){
         return ngayHenTra.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
+    
+    public LocalDate getdateNgayTra(){
+        return ngayTra.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+    }
+    
     public Boolean getTrangThai() {
         return trangThai;
     }

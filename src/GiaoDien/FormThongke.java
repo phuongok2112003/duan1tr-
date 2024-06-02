@@ -79,13 +79,11 @@ public class FormThongke extends javax.swing.JFrame {
    void loaddata(){
        List<Phieumuon>list= ketnoi.getAll();
       List<Phieumuon> data = list.stream()
-            .filter(phieuMuon -> (ChronoUnit.DAYS.between(phieuMuon.getdate(), currentDate) > 0)&&phieuMuon.getTrangThai()==true)
+            .filter(phieuMuon -> (phieuMuon.getTrangThai()==true) && (ChronoUnit.DAYS.between(phieuMuon.getdateNgayHenTra(), phieuMuon.getdateNgayTra()) > 0))
             .collect(Collectors.toList());
-      long fg= ChronoUnit.DAYS.between(data.get(0).getdate() ,currentDate);
-              
       for(Phieumuon a:data){
           model.addRow(new Object[] {a.getMaDG().getMaDG(),a.getMaDG().getHoTenDG()
-                  ,a.getNgayMuon(),a.getNgayTra(),ChronoUnit.DAYS.between(a.getdate(),currentDate)} );
+                  ,a.getNgayMuon(),a.getNgayTra(),ChronoUnit.DAYS.between(a.getdateNgayHenTra(), a.getdateNgayTra())} );
       }
        
    }
