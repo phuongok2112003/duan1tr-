@@ -25,8 +25,9 @@ public class FormThongke extends javax.swing.JFrame {
      LocalDate currentDate = LocalDate.now();
     public FormThongke() {
         initComponents();
+         model=(DefaultTableModel) jTable1.getModel();
         loaddata();
-        model=(DefaultTableModel) jTable1.getModel();
+       
     }
 
 
@@ -77,12 +78,14 @@ public class FormThongke extends javax.swing.JFrame {
 
    void loaddata(){
        List<Phieumuon>list= ketnoi.getAll();
-      List<Phieumuon>data=list.stream().filter(rootPane->
-      ChronoUnit.DAYS.between(currentDate, rootPane.getdate())>0
-      ).collect(Collectors.toList());
+      List<Phieumuon> data = list.stream()
+            .filter(phieuMuon -> (ChronoUnit.DAYS.between(phieuMuon.getdate(), currentDate) > 0)&&phieuMuon.getTrangThai()==true)
+            .collect(Collectors.toList());
+      long fg= ChronoUnit.DAYS.between(data.get(0).getdate() ,currentDate);
+              
       for(Phieumuon a:data){
           model.addRow(new Object[] {a.getMaDG().getMaDG(),a.getMaDG().getHoTenDG()
-                  ,a.getNgayMuon(),a.getNgayTra(),ChronoUnit.DAYS.between(currentDate, a.getdate())} );
+                  ,a.getNgayMuon(),a.getNgayTra(),ChronoUnit.DAYS.between(a.getdate(),currentDate)} );
       }
        
    }

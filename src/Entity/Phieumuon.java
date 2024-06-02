@@ -8,6 +8,7 @@ package Entity;
 
 import Entity.Chitietpm;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Collection;
@@ -86,24 +87,27 @@ public class Phieumuon implements Serializable {
         this.maPM = maPM;
     }
 
-    public Date getNgayMuon() {
-        return ngayMuon;
+    public String getNgayMuon() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return  sdf.format(ngayMuon);
     }
 
     public void setNgayMuon(Date ngayMuon) {
         this.ngayMuon = ngayMuon;
     }
 
-    public Date getNgayHenTra() {
-        return ngayHenTra;
+    public String getNgayHenTra() {
+         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(ngayHenTra);
     }
 
     public void setNgayHenTra(Date ngayHenTra) {
         this.ngayHenTra = ngayHenTra;
     }
 
-    public Date getNgayTra() {
-        return ngayTra;
+    public String getNgayTra() {
+       SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return ngayTra!=null? sdf.format(ngayTra):"";
     }
     public void setNgayTra(Date ngayTra) {
         this.ngayTra = ngayTra;
@@ -141,7 +145,12 @@ public class Phieumuon implements Serializable {
     public Nhanvien getMaNV() {
         return maNV;
     }
-
+    public String getInforNhanVien(){
+        return maNV.getMaNV().toString()+"-"+maNV.getHoTenNV();
+    }
+    public String getInforDocGia(){
+        return maDG.getMaDG().toString()+"-"+maDG.getHoTenDG();
+    }
     public void setMaNV(Nhanvien maNV) {
         this.maNV = maNV;
     }

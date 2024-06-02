@@ -80,9 +80,19 @@ public class Formmenu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Quản lý mượn trả");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Thống kê");
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu4MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -116,6 +126,16 @@ public class Formmenu extends javax.swing.JFrame {
         FormDocGia form=new FormDocGia();
         openChildForm(form);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+      FormPhieuMuon form=new FormPhieuMuon();
+        openChildForm(form);
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+       FormThongke form=new FormThongke();
+        openChildForm(form);
+    }//GEN-LAST:event_jMenu4MouseClicked
 
     /**
      * @param args the command line arguments

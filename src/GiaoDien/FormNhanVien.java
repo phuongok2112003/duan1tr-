@@ -35,11 +35,11 @@ public class FormNhanVien extends javax.swing.JFrame {
         clear();
       model.setRowCount(0);
       model=ketnoi.loaddata(model, new String[]{"getMaNV","getHoTenNV","getGioiTinh","getSdt",
-      "getEmail","getMatKhau","getNgaySinh"});
+      "getEmail","getNgaySinh"});
    
     }
     void clear(){
-        ketnoi.clear(new JTextField[]{txt_email,txt_manv,txt_matkhau,txt_sdt,txt_ten,txt_timkiem}, model);
+        ketnoi.clear(new JTextField[]{txt_email,txt_manv,txt_sdt,txt_ten,txt_timkiem}, model);
     }
 
     @SuppressWarnings("unchecked")
@@ -63,8 +63,6 @@ public class FormNhanVien extends javax.swing.JFrame {
         txt_email = new javax.swing.JTextField();
         date_ngaysinh = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        txt_matkhau = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btn_them = new javax.swing.JButton();
@@ -112,15 +110,12 @@ public class FormNhanVien extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel9.setText("Ngày sinh");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel10.setText("Mật khẩu");
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã nhân viên", "Họ tên", "Giới tính", "Số điện thoại", "Email", "Mật khẩu", "Ngày sinh"
+                "Mã nhân viên", "Họ tên", "Giới tính", "Số điện thoại", "Email", "Ngày sinh"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -192,11 +187,8 @@ public class FormNhanVien extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel10))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txt_matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(144, 144, 144)))
+                                    .addComponent(jLabel3))
+                                .addGap(144, 315, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
@@ -247,10 +239,11 @@ public class FormNhanVien extends javax.swing.JFrame {
                                     .addComponent(txt_manv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(33, 33, 33)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(rd_nam)
-                            .addComponent(rd_nu)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rd_nu, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel5)
+                                .addComponent(rd_nam))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,16 +252,12 @@ public class FormNhanVien extends javax.swing.JFrame {
                                 .addComponent(txt_ten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(64, 64, 64)
-                                        .addComponent(jLabel9))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel8)
-                                        .addGap(31, 31, 31)))
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txt_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,22 +265,19 @@ public class FormNhanVien extends javax.swing.JFrame {
                         .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(date_ngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)))
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_them)
-                        .addComponent(btn_sua)
-                        .addComponent(btn_xoa)
-                        .addComponent(btn_clear))
-                    .addComponent(txt_matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_them)
+                    .addComponent(btn_sua)
+                    .addComponent(btn_xoa)
+                    .addComponent(btn_clear))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(txt_timkiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -304,7 +290,7 @@ public class FormNhanVien extends javax.swing.JFrame {
        nhanvien.setEmail(txt_email.getText());
        nhanvien.setGioiTinh(rd_nam.isSelected()==true?"Nam":"Nu");
        nhanvien.setHoTenNV(txt_ten.getText());
-       nhanvien.setMatKhau(txt_matkhau.getText());
+       nhanvien.setMatKhau("0123456");
        nhanvien.setNgaySinh(date_ngaysinh.getDate());
        nhanvien.setSdt(txt_sdt.getText());
        ketnoi.addSv(nhanvien);
@@ -319,7 +305,7 @@ public class FormNhanVien extends javax.swing.JFrame {
        nhanvien.setEmail(txt_email.getText());
        nhanvien.setGioiTinh(rd_nam.isSelected()==true?"Nam":"Nu");
        nhanvien.setHoTenNV(txt_ten.getText());
-       nhanvien.setMatKhau(txt_matkhau.getText());
+       nhanvien.setMatKhau("0123456");
        nhanvien.setNgaySinh(date_ngaysinh.getDate());
        nhanvien.setSdt(txt_sdt.getText());
        ketnoi.sua(nhanvien);
@@ -346,7 +332,7 @@ public class FormNhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(!txt_timkiem.getText().isEmpty()){
            model= ketnoi.timkiem(model, txt_timkiem.getText(),new String[]{"getMaNV","getHoTenNV","getGioiTinh","getSdt",
-      "getEmail","getMatKhau","getNgaySinh"});
+      "getEmail","getNgaySinh"});
            
             
         }
@@ -358,13 +344,12 @@ public class FormNhanVien extends javax.swing.JFrame {
         if(row>=0){
             txt_manv.setText(jTable1.getValueAt( row, 0).toString());
             txt_email.setText(jTable1.getValueAt(row, 4).toString());
-            txt_matkhau.setText(jTable1.getValueAt(row, 5).toString());
             txt_sdt.setText(jTable1.getValueAt(row, 3).toString());
             txt_ten.setText(jTable1.getValueAt(row, 1).toString());
             if(jTable1.getValueAt(row, 2).toString().equals("Nam")){
                 rd_nam.setSelected(true);
             }else rd_nu.setSelected(true);
-            Date ngaysinh= DateUtils.parseDate(jTable1.getValueAt(row, 6).toString());
+            Date ngaysinh= DateUtils.parseDate(jTable1.getValueAt(row, 5).toString());
             date_ngaysinh.setDate(ngaysinh);
         }
     }//GEN-LAST:event_jTable1MouseClicked
@@ -413,7 +398,6 @@ public class FormNhanVien extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser date_ngaysinh;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -428,7 +412,6 @@ public class FormNhanVien extends javax.swing.JFrame {
     private javax.swing.JRadioButton rd_nu;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_manv;
-    private javax.swing.JTextField txt_matkhau;
     private javax.swing.JTextField txt_sdt;
     private javax.swing.JTextField txt_ten;
     private javax.swing.JTextField txt_timkiem;
