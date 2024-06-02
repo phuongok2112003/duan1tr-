@@ -32,23 +32,23 @@ public class FormDangNhap extends javax.swing.JFrame {
     Controller<Nhanvien> ketNoi = new Controller<>(Nhanvien.class);
     public FormDangNhap() {
         initComponents();
-        lblChangePassword.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        Font originalFont = lblChangePassword.getFont();
+        lblQuenMK.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        Font originalFont = lblQuenMK.getFont();
         
         Map<TextAttribute, Object> fontAttributes = (Map<TextAttribute, Object>) originalFont.getAttributes();
         fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON); // Đặt gạch chân
-        lblChangePassword.setFont(originalFont.deriveFont(fontAttributes));
+        lblQuenMK.setFont(originalFont.deriveFont(fontAttributes));
         
         // Thêm MouseListener để thay đổi màu chữ khi di chuột vào và ra khỏi JLabel
-        lblChangePassword.addMouseListener(new MouseAdapter() {
+        lblQuenMK.addMouseListener(new MouseAdapter() {
             
             public void mouseEntered(MouseEvent e) {
-                lblChangePassword.setForeground(Color.BLUE); // Đổi màu chữ thành xanh khi di chuột vào
+                lblQuenMK.setForeground(Color.BLUE); // Đổi màu chữ thành xanh khi di chuột vào
             }
 
             
             public void mouseExited(MouseEvent e) {
-                lblChangePassword.setForeground(Color.BLACK); // Đổi màu chữ lại thành đen khi di chuột ra
+                lblQuenMK.setForeground(Color.BLACK); // Đổi màu chữ lại thành đen khi di chuột ra
             }
         });
     }
@@ -69,11 +69,11 @@ public class FormDangNhap extends javax.swing.JFrame {
             if (nv.getMatKhau().equals(matKhau)) {
                 JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
                 // Thực hiện hành động tiếp theo sau khi đăng nhập thành công
-//                Menu newMenu = new Menu();
-//                newMenu.setVisible(true);
-//                XuLy.taiKhoanNhanVien = ketNoi_NhanVien.findById(Integer.parseInt(tenDN));
-//                
-//                this.setVisible(false);
+                Formmenu newMenu = new Formmenu();
+                newMenu.setVisible(true);
+                XuLy.taiKhoanNhanVien = nv;
+                
+                this.setVisible(false);
                 
             } else {
                 JOptionPane.showMessageDialog(this, "Sai mật khẩu!");
@@ -102,11 +102,12 @@ public class FormDangNhap extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblMK = new javax.swing.JLabel();
         txtMaNV = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnDN = new javax.swing.JButton();
         txtPass = new javax.swing.JPasswordField();
-        lblChangePassword = new javax.swing.JLabel();
+        lblQuenMK = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,27 +115,35 @@ public class FormDangNhap extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Mã nhân viên");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Mật khẩu");
+        lblMK.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblMK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMK.setText("Mật khẩu");
 
         txtMaNV.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Đăng nhập");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDN.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnDN.setText("Đăng nhập");
+        btnDN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDNActionPerformed(evt);
             }
         });
 
         txtPass.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        lblChangePassword.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
-        lblChangePassword.setText("Đổi mật khẩu");
-        lblChangePassword.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblQuenMK.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
+        lblQuenMK.setText("Quên mật khẩu?");
+        lblQuenMK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblChangePasswordMouseClicked(evt);
+                lblQuenMKMouseClicked(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton2.setText("Thoát");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -145,16 +154,19 @@ public class FormDangNhap extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnDN, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblMK, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtMaNV)
                             .addComponent(txtPass, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(lblChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblQuenMK, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -166,27 +178,49 @@ public class FormDangNhap extends javax.swing.JFrame {
                     .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMK, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(66, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblChangePassword)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblQuenMK)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDN, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        check();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnDNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDNActionPerformed
+        if (btnDN.getText() == "Đăng nhập") {
+            check();
+        }
+        else {
+            char[] password = txtPass.getPassword();
+            if (password != null && password.length > 0) {
+                Nhanvien nv = ketNoi.findById(Integer.parseInt(txtMaNV.getText()));
+                nv.setMaNV(Integer.parseInt(txtMaNV.getText()));
+                nv.setHoTenNV(nv.getHoTenNV());
+                nv.setGioiTinh(nv.getGioiTinh());
+                Date ngaysinh= DateUtils.parseDate(nv.getNgaySinh());
+                nv.setNgaySinh(ngaysinh);
+                nv.setSdt(nv.getSdt());
+                nv.setEmail(nv.getEmail());
+                nv.setMatKhau(new String(txtPass.getPassword()));
+                ketNoi.sua(nv);
+                JOptionPane.showMessageDialog(this, "Sửa mật khẩu thành công!");
+                txtPass.setText("");
+                btnDN.setText("Đăng nhập");
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Yêu cầu nhập mật khẩu mới!");
+            }
+        }
+        
+    }//GEN-LAST:event_btnDNActionPerformed
 
-    private void lblChangePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblChangePasswordMouseClicked
+    private void lblQuenMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuenMKMouseClicked
         if(!txtMaNV.getText().isEmpty()) {
             String maNV = txtMaNV.getText();
             String matKhau = new String(txtPass.getPassword());
@@ -194,23 +228,26 @@ public class FormDangNhap extends javax.swing.JFrame {
             Nhanvien nv = ketNoi.findById(Integer.parseInt(maNV));
             if (nv != null) {
                 // Nếu mã nhân viên tồn tại, đổi mật khẩu
-                nv.setMaNV(Integer.parseInt(maNV));
-                nv.setHoTenNV(nv.getHoTenNV());
-                nv.setGioiTinh(nv.getGioiTinh());
-                Date ngaysinh= DateUtils.parseDate(nv.getNgaySinh());
-                nv.setNgaySinh(ngaysinh);
-                nv.setSdt(nv.getSdt());
-                nv.setEmail(nv.getEmail());
-                nv.setMatKhau(matKhau);
-                ketNoi.sua(nv);
-                JOptionPane.showMessageDialog(this, "Sửa mật khẩu thành công!");
+                lblMK.setText("Mật khẩu mới");
+                btnDN.setText("Đổi mật khẩu");
             } else {
                 JOptionPane.showMessageDialog(this, "Tên đăng nhập không tồn tại!");
             }
         } else {
             JOptionPane.showMessageDialog(this, "Yêu cầu nhập tên đăng nhập!");
         }
-    }//GEN-LAST:event_lblChangePasswordMouseClicked
+    }//GEN-LAST:event_lblQuenMKMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (btnDN.getText() == "Đổi mật khẩu") {
+            lblMK.setText("Mật khẩu");
+            btnDN.setText("Đăng nhập");
+        }
+        else {
+            System.exit(0);
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,10 +285,11 @@ public class FormDangNhap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnDN;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lblChangePassword;
+    private javax.swing.JLabel lblMK;
+    private javax.swing.JLabel lblQuenMK;
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtPass;
     // End of variables declaration//GEN-END:variables

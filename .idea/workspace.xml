@@ -6,6 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="ea46b41a-64f0-486f-8065-8f6253ef8ae7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GiaoDien/FormDangNhap.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GiaoDien/FormDangNhap.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GiaoDien/FormDangNhap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GiaoDien/FormDangNhap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GiaoDien/FormDocGia.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GiaoDien/FormDocGia.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GiaoDien/FormDocGia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GiaoDien/FormDocGia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GiaoDien/FormNhanVien.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GiaoDien/FormNhanVien.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GiaoDien/FormNhanVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GiaoDien/FormNhanVien.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GiaoDien/FormThongke.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GiaoDien/FormThongke.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GiaoDien/FormThongke.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GiaoDien/FormThongke.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Untils/XuLy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Untils/XuLy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +42,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "phieu__muon",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/X.Phuong/Desktop"
   }

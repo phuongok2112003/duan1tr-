@@ -5,6 +5,7 @@
  */
 package Untils;
 
+import Entity.Nhanvien;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -25,4 +26,6 @@ public class XuLy {
     public static void mesLoi(Exception e,JFrame t){
            JOptionPane.showMessageDialog(t,e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
      }
+    
+    public static Nhanvien taiKhoanNhanVien;
 }
